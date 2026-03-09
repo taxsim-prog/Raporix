@@ -1,8 +1,8 @@
 import StorageService from "../utils/StorageService";
 import { authEventEmitter } from "../utils/AuthEventEmitter";
 
-//const BASE_URL = "https://api.raptortr.com";
-const BASE_URL = "http://192.168.1.103:8000";
+const BASE_URL = "https://api.raptortr.com";
+//const BASE_URL = "http://192.168.1.103:8000"; // eski local IP - kullanılmıyor
 
 type HttpMethod = "GET" | "POST" | "PATCH" | "DELETE";
 
