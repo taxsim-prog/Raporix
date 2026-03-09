@@ -140,7 +140,7 @@ const LoginScreen = ({ navigation, onLogin }: LoginScreenProps) => {
           {/* Welcome Card */}
           <View style={[styles.welcomeCard]}>
             <Image
-              source={require('../assets/raptor.png')}
+              source={require('../assets/raptor_old.png')}
               style={styles.logo}
               resizeMode="contain"
             />
