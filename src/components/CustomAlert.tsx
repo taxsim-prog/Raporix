@@ -9,7 +9,7 @@ import {
   Dimensions,
   TouchableWithoutFeedback,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+// MaterialIcons kaldırıldı - font yükleme sorunu çözümü
 
 interface CustomAlertProps {
   visible: boolean;
@@ -72,13 +72,13 @@ const CustomAlert: React.FC<CustomAlertProps> = ({
   const getIconConfig = () => {
     switch (type) {
       case 'success':
-        return { name: 'check-circle', color: '#27ae60', backgroundColor: '#d5f4e6' };
+        return { icon: '✓', color: '#27ae60', backgroundColor: '#d5f4e6' };
       case 'error':
-        return { name: 'error', color: '#e74c3c', backgroundColor: '#fdeaea' };
+        return { icon: '✕', color: '#e74c3c', backgroundColor: '#fdeaea' };
       case 'warning':
-        return { name: 'warning', color: '#f39c12', backgroundColor: '#fef9e7' };
+        return { icon: '!', color: '#f39c12', backgroundColor: '#fef9e7' };
       default:
-        return { name: 'info', color: '#3498db', backgroundColor: '#ebf3fd' };
+        return { icon: 'i', color: '#3498db', backgroundColor: '#ebf3fd' };
     }
   };
 
@@ -134,7 +134,7 @@ const CustomAlert: React.FC<CustomAlertProps> = ({
             >
               {/* Icon */}
               <View style={[styles.iconContainer, { backgroundColor: iconConfig.backgroundColor }]}>
-                <Icon name={iconConfig.name} size={32} color={iconConfig.color} />
+                <Text style={{fontSize: 28, fontWeight: "bold", color: iconConfig.color, lineHeight: 34}}>{iconConfig.icon}</Text>
               </View>
 
               {/* Content */}
