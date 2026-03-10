@@ -35,7 +35,7 @@ type AlertConfig = {
 };
 
 // API Base URL for image display
-const API_BASE_URL = "http://192.168.1.108:8000";
+const API_BASE_URL = "http://104.247.166.239:8000";
 
 const ReportHeaderTemplateScreen = ({ navigation }: { navigation: NavigationProp<any> }) => {
   const { theme } = useTheme();
