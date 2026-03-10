@@ -28,9 +28,15 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Bundle JavaScript into APK
+      - name: Clean previous assets
         run: |
+          rm -rf android/app/src/main/assets
+          rm -rf android/app/src/main/res/drawable-*
+          rm -rf android/app/src/main/res/raw
           mkdir -p android/app/src/main/assets
+
+      - name: Bundle JavaScript and Assets
+        run: |
           npx react-native bundle \
             --platform android \
             --dev false \
