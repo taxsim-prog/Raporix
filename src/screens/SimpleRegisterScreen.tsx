@@ -131,17 +131,24 @@ const SimpleRegisterScreen = ({ navigation }: SimpleRegisterScreenProps) => {
 
       // Token ve kullanıcı bilgilerini kaydet
       if (response.access_token) {
-        await StorageService.setItem('authToken', response.access_token);
+        await StorageService.setItem('userToken', response.access_token);
         await StorageService.setItem('currentUser', response.user);
+        await StorageService.setItem('userEmail', formData.email.toLowerCase().trim());
+      }
+
+      // Mail doğrulama kodu gönder
+      try {
+        await AuthApi.sendMailVerification(formData.email.toLowerCase().trim());
+      } catch (e) {
+        console.log('[SimpleRegisterScreen] Mail gönderilemedi:', e);
       }
 
       showAlert({
         title: 'Başarılı',
-        message: 'Kayıt başarıyla tamamlandı. Şirket bilgilerini ekleyerek özellikleri kullanmaya başlayabilirsiniz.',
+        message: 'Kayıt tamamlandı! E-posta adresinize doğrulama kodu gönderdik.',
         type: 'success',
         onConfirm: () => {
-          // Ana sayfaya yönlendir
-          navigation.navigate('Login');
+          navigation.navigate('EmailVerification', { email: formData.email.toLowerCase().trim() });
         },
       });
     } catch (error: any) {
